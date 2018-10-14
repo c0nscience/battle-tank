@@ -24,7 +24,7 @@ protected:
 
 private:
 	UPROPERTY(EditAnywhere, Category = Firing)
-	float LaunchSpeed = 10000;
+	float LaunchSpeed = 4000;
 
 public:	
 	// Called to bind functionality to input

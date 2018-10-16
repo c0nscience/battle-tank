@@ -23,7 +23,7 @@ public:
 
 	virtual void Tick(float DeltaSeconds) override;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float CrosshairXLocation = 0.5;
 
 	UPROPERTY(EditAnywhere)

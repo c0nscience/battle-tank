@@ -31,9 +31,12 @@ public:
 
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000;
-private:
+
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 	ATank* GetControlledTank() const;
 
+private:
 	void AimTowardsCrosshair();
 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;

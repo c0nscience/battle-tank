@@ -9,6 +9,14 @@
 class UTankBarrel;
 class UTankTurret;
 
+UENUM()
+enum class EFiringStatus : uint8 
+{ 
+	Reloading, 
+	Aiming, 
+	Locked 
+};
+
 UCLASS( ClassGroup=(Tank), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
@@ -23,6 +31,10 @@ public:
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	
 	void SetTurretReference(UTankTurret* TurretToSet);
+
+protected:
+	UPROPERTY(BlueprintReadOnly, Category = "Firing")
+	EFiringStatus FiringStatus = EFiringStatus::Aiming;
 
 private:
 	UTankBarrel* Barrel = nullptr;

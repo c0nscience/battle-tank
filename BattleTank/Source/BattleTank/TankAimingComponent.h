@@ -32,6 +32,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
+	EFiringStatus GetFiringStatus() const;
+
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 

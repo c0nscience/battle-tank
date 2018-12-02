@@ -76,6 +76,11 @@ void UTankAimingComponent::Fire()
 
 }
 
+EFiringStatus UTankAimingComponent::GetFiringStatus() const
+{
+	return FiringStatus;
+}
+
 void UTankAimingComponent::Initialize(UTankBarrel * BarrelToSet, UTankTurret * TurretToSet)
 {
 	Turret = TurretToSet;
@@ -105,5 +110,5 @@ bool UTankAimingComponent::IsBarrelMoving()
 {
 	if (!ensure(Barrel)) { return false; }
 
-	return !AimDirection.Equals(Barrel->GetForwardVector(), 0.01);
+	return !AimDirection.Equals(Barrel->GetForwardVector(), 0.1);
 }

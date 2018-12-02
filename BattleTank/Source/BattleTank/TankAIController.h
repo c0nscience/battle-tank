@@ -22,6 +22,6 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 private:
-
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float AcceptanceRadius = 5000;
 };

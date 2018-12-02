@@ -1,9 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
-#include "Engine/World.h"
-#include "TankBarrel.h"
-#include "Projectile.h"
 
 // Sets default values
 ATank::ATank()
@@ -12,23 +9,3 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ATank::Fire()
-{
-	if (!ensure(Barrel)) { return; }
-
-	auto CurrentTime = FPlatformTime::Seconds();
-	bool isReloaded = (CurrentTime - LastFiredTime) > ReloadTime;
-
-	if (isReloaded)
-	{
-		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-			ProjectileBlueprint,
-			Barrel->GetSocketLocation(FName("Projectile")),
-			Barrel->GetSocketRotation(FName("Projectile"))
-		);
-
-		Projectile->Launch(LaunchSpeed);
-		LastFiredTime = CurrentTime;
-	}
-
-}

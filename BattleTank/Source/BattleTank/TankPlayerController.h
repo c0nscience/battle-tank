@@ -41,6 +41,8 @@ protected:
 	void FoundAimingComponent(UTankAimingComponent* AimingComponentReference);
 
 private:
+	UTankAimingComponent* AimingComponent = nullptr;
+
 	void AimTowardsCrosshair();
 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;

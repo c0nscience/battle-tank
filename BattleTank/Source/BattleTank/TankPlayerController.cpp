@@ -18,6 +18,7 @@ void ATankPlayerController::BeginPlay()
 
 	if (AimingComponent)
 	{
+		this->AimingComponent = AimingComponent;
 		FoundAimingComponent(AimingComponent);
 	}
 }
@@ -42,7 +43,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		GetControlledTank()->AimAt(HitLocation);
+		this->AimingComponent->AimAt(HitLocation);
 	}
 
 }

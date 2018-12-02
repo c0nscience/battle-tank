@@ -13,11 +13,11 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-// Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void ATank::BeginPlay()
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	Super::BeginPlay();
 
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATank::AimAt(FVector HitLocation)

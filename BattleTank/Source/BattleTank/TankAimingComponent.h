@@ -56,4 +56,6 @@ private:
 	TSubclassOf<AProjectile> ProjectileBlueprint = nullptr;
 
 	void MoveBarrelTowards(FVector AimDirection);
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction) override;
 };

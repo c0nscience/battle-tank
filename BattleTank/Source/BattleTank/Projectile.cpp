@@ -6,6 +6,7 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "PhysicsEngine/RadialForceComponent.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -48,6 +49,15 @@ void AProjectile::OnHit(UPrimitiveComponent * HitComp, AActor * OtherActor, UPri
 
 	SetRootComponent(ImpactBlast);
 	CollisionMesh->DestroyComponent();
+
+	UGameplayStatics::ApplyRadialDamage(
+		this,
+		Damage,
+		GetActorLocation(),
+		ExplosionForce->Radius,
+		UDamageType::StaticClass(),
+		TArray<AActor*>()
+	);
 
 	FTimerHandle Timer;
 	GetWorld()->GetTimerManager().SetTimer(Timer, this, &AProjectile::OnTimerExpire, DestroyDelay, false);

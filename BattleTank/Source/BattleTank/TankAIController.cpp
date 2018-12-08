@@ -43,6 +43,5 @@ void ATankAIController::SetPawn(APawn * InPawn)
 
 void ATankAIController::OnTankDied()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Tank died of AI controller"));
-
+	GetPawn()->DetachFromControllerPendingDestroy();
 }

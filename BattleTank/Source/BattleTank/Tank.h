@@ -17,16 +17,18 @@ public:
 	// Sets default values for this pawn's properties
 	ATank();
 
+	virtual void BeginPlay() override;
+
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealthPercent() const;
 
 	FTankDelegate OnDeath;
-
 private:
+
 	UPROPERTY(EditDefaultsOnly)
 	int32 StartingHealth = 100;
 
-	int32 CurrentHealth = StartingHealth;
+	int32 CurrentHealth;
 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEvent, class AController * EventInstigator, AActor * DamageCauser) override;
 

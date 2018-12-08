@@ -86,6 +86,11 @@ EFiringStatus UTankAimingComponent::GetFiringStatus() const
 	return FiringStatus;
 }
 
+int32 UTankAimingComponent::GetAmmunitionCount() const
+{
+	return AmmunitionCount;
+}
+
 void UTankAimingComponent::Initialize(UTankBarrel * BarrelToSet, UTankTurret * TurretToSet)
 {
 	Turret = TurretToSet;

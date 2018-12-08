@@ -33,19 +33,22 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
+	UFUNCTION(BlueprintCallable)
 	EFiringStatus GetFiringStatus() const;
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetAmmunitionCount() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialize(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
-protected:
-	UPROPERTY(BlueprintReadOnly, Category = "Firing")
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	EFiringStatus FiringStatus = EFiringStatus::Reloading;
 
-	UPROPERTY(BlueprintReadOnly, Category = "Firing")
-	int AmmunitionCount = 2;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 AmmunitionCount = 2;
 
-private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000;
 

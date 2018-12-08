@@ -15,7 +15,8 @@ enum class EFiringStatus : uint8
 { 
 	Reloading, 
 	Aiming, 
-	Locked 
+	Locked,
+	OutOfAmmunition
 };
 
 UCLASS(ClassGroup=(Tank), meta=(BlueprintSpawnableComponent))
@@ -41,6 +42,9 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Firing")
 	EFiringStatus FiringStatus = EFiringStatus::Reloading;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Firing")
+	int AmmunitionCount = 2;
+
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000;
@@ -61,7 +65,11 @@ private:
 
 	void MoveBarrelTowards(FVector AimDirection);
 
+	bool IsReloading();
+
 	bool IsBarrelMoving();
+
+	bool IsOutOfAmmunition();
 
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction) override;
 };

@@ -15,6 +15,9 @@ public:
 	// Sets default values for this pawn's properties
 	ATank();
 
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealthPercent() const;
+
 private:
 	UPROPERTY(EditDefaultsOnly)
 	int32 StartingHealth = 100;
